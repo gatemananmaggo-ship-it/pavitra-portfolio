@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Astrologer Portfolio</title>
+    <meta name="description"
+        content="Professional portfolio of an astrologer showcasing services, skills, and contact information." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Mystical Loading Screen -->
+    <div id="mystical-loader">
+        <div class="loader-content">
+            <div class="celestial-spinner">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="var(--accent-gold)" stroke-width="1.5" stroke-dasharray="12 6 8 6" />
+                    <circle cx="50" cy="50" r="35" fill="none" stroke="var(--accent-gold)" stroke-width="0.8" stroke-dasharray="4 4" />
+                    <path d="M50 25 L53 38 L65 41 L53 44 L50 57 L47 44 L35 41 L47 38 Z" fill="var(--accent-gold)" />
+                    <line x1="50" y1="5" x2="50" y2="95" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.3" />
+                    <line x1="5" y1="50" x2="95" y2="50" stroke="var(--accent-gold)" stroke-width="0.5" opacity="0.3" />
+                    <circle cx="50" cy="50" r="6" fill="none" stroke="var(--accent-gold)" stroke-width="1" />
+                </svg>
+            </div>
+            <h2 class="loader-text">Consulting the Stars...</h2>
+            <p class="loader-subtext">Aligning celestial paths</p>
+        </div>
+    </div>
+    <script>
+        // Inline check to prevent flash of loader if visited before in session
+        if (sessionStorage.getItem('visited_before')) {
+            document.getElementById('mystical-loader').style.display = 'none';
+        }
+    </script>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Astrologer Pavitra</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="connect.html">Connect</a></li>
+        </ul>
+        <div class="menu-toggle"><span></span><span></span><span></span></div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Pavitra’s Celestial World</h1>
+            <p>Every obstacle you face is simply an unaligned energy waiting to be understood and channeled. By blending
+                the mathematical precision of Vedic Astrology and Numerology with the intuitive clarity of Tarot
+                Reading, we map out your soul's exact blueprint and divine timing. To help you manifest these insights
+                into reality, we bridge the gap between cosmic theory and practical everyday magic. Through the
+                vibrational resonance of Bowl Healing, the focused intention of Candle Spells, and the sacred geometry
+                of Zibu Symbols, we actively clear the subconscious blockages holding you back. By further integrating
+                the immediate psychological shifts of Switch Words and the grounding protection of your personal Animal
+                Totems, you receive a holistic, deeply personalized toolkit for transformation. You do not have to
+                navigate life's uncertainties alone. Connect with us today, and let us align your cosmic path so you can
+                step effortlessly into the abundance, clarity, and peace you deserve.</p>
+            <a href="connect.html" class="cta-button">Get Your Reading</a>
+        </div>
+        <div class="hero-image">
+            <img src="assets/astrologer_portrait.png" alt="Astrologer Portrait" />
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2>My Skills & Expertise</h2>
+        <div class="skills-grid">
+            <!-- Vedic Astrology -->
+            <div class="skill-card">
+                <div class="skill-svg-container">
+                    <img src="assets/vedic astrology.png" alt="Vedic Astrology" class="skill-img" />
+                </div>
+                <h3>Vedic Astrology</h3>
+                <p>Using the ancient Jyotish system to look into karma, destiny, and precise planetary dasha periods for
+                    accurate life predictions.</p>
+            </div>
+
+            <!-- Tarot Reading -->
+            <div class="skill-card">
+                <div class="skill-svg-container">
+                    <img src="assets/tarot reading.png" alt="Tarot Reading" class="skill-img" />
+                </div>
+                <h3>Tarot Reading</h3>
+                <p>Decoding the archetypal messages of the Tarot deck to provide intuitive guidance on career,
+                    relationships, and decisions.</p>
+            </div>
+
+            <!-- Numerology -->
+            <div class="skill-card">
+                <div class="skill-svg-container">
+                    <img src="assets/numerology.png" alt="Numerology" class="skill-img" />
+                </div>
+                <h3>Numerology</h3>
+                <p>Discovering the hidden meaning behind your birth numbers and name frequencies to align you with your
+                    cosmic vibration.</p>
+            </div>
+
+            <!-- Bowl Healing -->
+            <div class="skill-card">
+                <div class="skill-svg-container">
+                    <img src="assets/bowl healing.png" alt="Bowl Healing" class="skill-img" />
+                </div>
+                <h3>Bowl Healing</h3>
+                <p>Harmonizing your body's energy centers using the deep, resonant acoustic vibrations of Tibetan
+                    singing bowls.</p>
+            </div>
+
+            <!-- Candle Spells -->
+            <div class="skill-card">
+                <div class="skill-svg-container">
+                    <img src="assets/candle spells.png" alt="Candle Spells" class="skill-img" />
+                </div>
+                <h3>Candle Spells</h3>
+                <p>Manifesting intentions and executing candle magic rituals aligned with lunar phases to clear
+                    blockages and build path openings.</p>
+            </div>
+
+            <!-- Zibu Symbols -->
+            <div class="skill-card">
+                <div class="skill-svg-container">
+                    <img src="assets/zibu symbols.png" alt="Zibu Symbols" class="skill-img" />
+                </div>
+                <h3>Zibu Symbols</h3>
+                <p>Utilizing sacred angelic symbols to channel therapeutic energies for love, healing, prosperity, and
+                    spiritual peace.</p>
+            </div>
+
+            <!-- Switch Words -->
+            <div class="skill-card">
+                <div class="skill-svg-container">
+                    <img src="assets/switch words.png" alt="Switch Words" class="skill-img" />
+                </div>
+                <h3>Switch Words</h3>
+                <p>Activating the subconscious mind using targeted verbal key-phrases to shift your energetic frequency
+                    and manifest desires.</p>
+            </div>
+
+            <!-- Animal Totems -->
+            <div class="skill-card">
+                <div class="skill-svg-container">
+                    <img src="assets/animal totems.png" alt="Animal Totems" class="skill-img" />
+                </div>
+                <h3>Animal Totems</h3>
+                <p>Connecting with the spiritual wisdom, protection, and power of your personal animal spirit guides and
+                    totem archetypes.</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <p>&copy; 2026 Astrologer Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+// script.js
+
+// Mobile navigation toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('open');
+  });
+}
+
+
+// Simple scroll reveal for sections
+const sections = document.querySelectorAll('section');
+const revealOnScroll = () => {
+  const triggerBottom = window.innerHeight * 0.85;
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    if (sectionTop < triggerBottom) {
+      section.classList.add('visible');
+    }
+  });
+};
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+
+// Loader fade-out and session storage setup
+const loader = document.getElementById('mystical-loader');
+if (loader && loader.style.display !== 'none') {
+  sessionStorage.setItem('visited_before', 'true');
+  setTimeout(() => {
+    loader.classList.add('fade-out');
+    setTimeout(() => {
+      loader.style.display = 'none';
+    }, 800); // match transition duration (0.8s)
+  }, 2200); // display loader for 2.2s
+}
+</script>
+<canvas id="constellation-canvas"></canvas>
+<script>
+(() => {
+  const canvas = document.getElementById('constellation-canvas');
+  const ctx = canvas.getContext('2d');
+  const stars = [];
+    const config = {
+      starCount: 30,
+      maxVelocity: 0.3,
+      maxDistance: 100,
+      starSize: 2,
+      lineWidth: 0.7,
+      hue: 45,
+    };
+  const resize = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  };
+  window.addEventListener('resize', resize);
+  resize();
+  for (let i = 0; i < config.starCount; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      vx: (Math.random() - 0.5) * config.maxVelocity,
+      vy: (Math.random() - 0.5) * config.maxVelocity,
+    });
+  }
+  const draw = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = `hsl(${config.hue},100%,70%)`;
+    ctx.shadowColor = `hsl(${config.hue},100%,70%)`;
+    ctx.shadowBlur = 8;
+    stars.forEach(s => {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, config.starSize, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.strokeStyle = `hsla(${config.hue},100%,70%,0.3)`;
+    ctx.lineWidth = config.lineWidth;
+    for (let i = 0; i < stars.length; i++) {
+      for (let j = i + 1; j < stars.length; j++) {
+        const dx = stars[i].x - stars[j].x;
+        const dy = stars[i].y - stars[j].y;
+        const dist = Math.hypot(dx, dy);
+        if (dist < config.maxDistance) {
+          ctx.beginPath();
+          ctx.moveTo(stars[i].x, stars[i].y);
+          ctx.lineTo(stars[j].x, stars[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    stars.forEach(s => {
+      s.x += s.vx;
+      s.y += s.vy;
+      if (s.x < 0 || s.x > canvas.width) s.vx *= -1;
+      if (s.y < 0 || s.y > canvas.height) s.vy *= -1;
+    });
+    requestAnimationFrame(draw);
+  };
+  draw();
+})();
+</script>
+
+
+</body>
+
+</html>

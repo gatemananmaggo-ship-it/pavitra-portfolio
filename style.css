@@ -1,0 +1,493 @@
+/* Mystical Starfield Background */
+body {
+    background: hsl(260, 70%, 20%);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* .constellation styling removed; canvas used instead */
+#constellation-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2000;
+    background: transparent;
+}
+
+
+
+@keyframes starTwinkle {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+/*
+/* subtle star twinkling overlay */
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: twinkling 3s infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes twinkling {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.9; }
+}
+/* style.css */
+/* Color palette */
+:root {
+    --primary-red: hsl(0, 78%, 45%);
+    /* rich red */
+    --bg-white: #fdfdfd;
+    --text-dark: #222222;
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --transition-speed: 0.3s;
+    --font-family: 'Outfit', sans-serif;
+    --accent-gold: hsl(45, 100%, 55%);
+}
+
+/* Global resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: hsl(260, 70%, 20%);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    backdrop-filter: blur(12px);
+    background: rgba(20, 0, 30, 0.85); /* dark violet translucent */
+    border-bottom: 1px solid var(--glass-border);
+    z-index: 1000;
+    transition: background var(--transition-speed);
+}
+
+.navbar .logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff; /* bright for visibility */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 1.2rem;
+    position: relative;
+    transition: color var(--transition-speed);
+}
+
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: var(--primary-red);
+    transition: width var(--transition-speed);
+}
+
+.nav-links a:hover {
+    color: var(--accent-gold);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hamburger for mobile */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-dark);
+    transition: background var(--transition-speed);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+    padding-top: 5rem;
+    margin-top: 80px; /* gap to avoid overlap with navbar */
+    /* offset fixed navbar */
+    background: linear-gradient(135deg, #fff0f0, #ffecec);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 600px;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-red);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary-red);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background var(--transition-speed), transform var(--transition-speed);
+}
+
+.cta-button:hover {
+    background: hsl(0, 78%, 55%);
+    transform: translateY(-2px);
+}
+
+.hero-image {
+    max-width: 500px;
+    animation: float 4s ease-in-out infinite;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sections */
+section {
+    padding: 4rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-gold);
+    text-align: center;
+    text-shadow: 0 0 8px rgba(255,215,0,0.6);
+}
+
+
+.about,
+.skills,
+.contact {
+    background: transparent;
+}
+
+/* Skills Section - Grid and Cards */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.skill-card {
+    background: #ffffff;
+    border: 1.5px solid rgba(229, 28, 35, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-red);
+    box-shadow: 0 12px 30px rgba(229, 28, 35, 0.12);
+}
+
+.skill-svg-container {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #fff3f3 0%, #ffe8e8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(229, 28, 35, 0.15);
+    overflow: hidden;
+}
+
+.skill-svg-container svg {
+    width: 70px;
+    height: 70px;
+    fill: var(--primary-red);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.skill-card:hover .skill-svg-container svg {
+    transform: scale(1.18) rotate(6deg);
+}
+
+.skill-card h3 {
+    font-size: 1.25rem;
+    color: var(--primary-red);
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.skill-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Contact Form */
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.contact input,
+.contact textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    resize: vertical;
+}
+
+.contact button {
+    align-self: flex-start;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    color: var(--text-dark);
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--glass-bg);
+        position: absolute;
+        top: 60px;
+        right: 2rem;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image {
+        margin-top: 2rem;
+    }
+}
+
+/* Skill‑card image sizing – makes the images fill the container neatly */
+.skill-svg-container {
+    /* keep the existing size (180 px tall) */
+    width: 100%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* clip any overflow */
+    background: linear-gradient(135deg, #fff3f3 0%, #ffe8e8 100%);
+    border: 1px solid rgba(229, 28, 35, 0.15);
+    border-radius: 8px;
+}
+
+/* Image inside the container */
+.skill-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* preserve aspect ratio, no distortion */
+    border-radius: 8px;
+    transition: transform var(--transition-speed);
+}
+
+/* Slight zoom on hover for a premium feel */
+.skill-card:hover .skill-img {
+    transform: scale(1.05);
+}
+
+/* Footer always at bottom */
+html,
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+/* Hero image oval shape */
+.hero-image img {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Mystical Fullscreen Loader Overlay */
+#mystical-loader {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at center, hsl(260, 60%, 12%) 0%, hsl(280, 50%, 6%) 100%);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity: 1;
+    pointer-events: all;
+}
+
+#mystical-loader.fade-out {
+    opacity: 0;
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
+.loader-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.celestial-spinner {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    animation: spin 8s linear infinite;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+}
+
+.celestial-spinner svg {
+    width: 100%;
+    height: 100%;
+}
+
+.loader-text {
+    font-family: var(--font-family);
+    color: var(--accent-gold);
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    animation: pulseText 2s ease-in-out infinite;
+}
+
+.loader-subtext {
+    font-family: var(--font-family);
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.95rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: -0.5rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 0.6; transform: scale(0.98); }
+    50% { opacity: 1; transform: scale(1); }
+}
