@@ -130,13 +130,14 @@ body {
     flex-direction: column;
     cursor: pointer;
     gap: 5px;
+    z-index: 1002;
 }
 
 .menu-toggle span {
     width: 25px;
     height: 3px;
-    background: var(--text-dark);
-    transition: background var(--transition-speed);
+    background: #ffffff;
+    transition: all var(--transition-speed) ease;
 }
 
 /* Hero Section */
@@ -343,18 +344,43 @@ section h2 {
 /* Responsive */
 @media (max-width: 768px) {
     .nav-links {
-        display: none;
+        display: flex;
         flex-direction: column;
-        background: var(--glass-bg);
+        background: rgba(20, 10, 30, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.15);
         position: absolute;
-        top: 60px;
+        top: 70px;
         right: 2rem;
-        padding: 1rem;
-        border-radius: 8px;
+        padding: 1.5rem 2rem;
+        border-radius: 12px;
+        gap: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        z-index: 1001;
+        opacity: 0;
+        transform: translateY(-10px);
+        pointer-events: none;
+        transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
     }
 
     .menu-toggle {
         display: flex;
+    }
+
+    /* Transform hamburger to 'X' when open */
+    .menu-toggle.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 
     .hero {
