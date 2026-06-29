@@ -5,39 +5,61 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About – Astrologer Pavitra</title>
-  <meta name="description" content="Meet Astrologer Pavitra – 15+ years of experience in Vedic Astrology, Tarot, and Energy Healing. View certifications and client reviews." />
+  <title>About Astrologer Pavitra – 15+ Years of Vedic Astrology &amp; Healing</title>
+  <meta name="description" content="Meet Astrologer Pavitra – 15+ years of certified expertise in Vedic Astrology, Tarot, Numerology, and Sound Healing. Read client testimonials and share your experience." />
+  <!-- Preconnect for font origin -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Preload the font stylesheet to stop it blocking render -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" /></noscript>
   <link rel="stylesheet" href="style.css" />
+  <!-- Critical above-the-fold color so FCP fires even before fonts -->
+  <style>
+    html { background: hsl(260, 60%, 10%); }
+    body { background: transparent; color: #f5f5f7; }
+  </style>
 </head>
 
 <body>
-  <!-- Navigation Bar (same as index) -->
-  <nav class="navbar">
-    <div class="logo">Astrologer Pavitra</div>
-    <ul class="nav-links">
+  <!-- Skip navigation for keyboard / screen-reader users -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" aria-label="Main navigation">
+    <a href="index.html" class="logo" aria-label="Astrologer Pavitra – home">Astrologer Pavitra</a>
+    <ul class="nav-links" role="list">
       <li><a href="index.html#home">Home</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
       <li><a href="index.html#skills">Skills</a></li>
       <li><a href="connect.html">Connect</a></li>
     </ul>
-    <div class="menu-toggle"><span></span><span></span><span></span></div>
+    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
   </nav>
 
   <!-- Main Container -->
-  <main class="about-page-container">
-    <section class="about-card">
-      <h2 style="margin-bottom: 2rem; font-size: 2.2rem;">About Me</h2>
-      
+  <main id="main-content" class="about-page-container">
+    <section class="about-card" aria-labelledby="about-heading">
+      <!-- h1: only one per page – this is the main page heading -->
+      <h1 id="about-heading" class="about-page-title">About Me</h1>
+
       <div class="about-grid">
         <div class="about-image-wrapper">
-          <img src="assets/pavitra2.jpeg" alt="Astrologer Pavitra" />
+          <!-- Explicit dimensions prevent CLS; fetchpriority=high for LCP -->
+          <img
+            src="assets/pavitra2.jpeg"
+            alt="Astrologer Pavitra – certified Vedic astrologer and healer"
+            width="320" height="320"
+            fetchpriority="high"
+          />
         </div>
-        
+
         <div class="about-text-content">
-          <h3>Meet Astrologer Pavitra</h3>
+          <h2>Meet Astrologer Pavitra</h2>
           <span class="about-experience-badge">15+ Years of Cosmic Guidance</span>
           <p class="about-bio">
             For over 15 years, I have dedicated my life to the study and practice of cosmic patterns, helping thousands of seekers find alignment, clarity, and purpose. My journey began with a profound calling to bridge the ancient wisdom of the celestial bodies with the psychological and emotional blockages of modern life.
@@ -47,7 +69,7 @@
           </p>
           
           <div class="certifications-section">
-            <h4>Certifications & Credentials</h4>
+          <h3>Certifications &amp; Credentials</h3>
             <div class="certifications-list">
               <div class="certification-item">
                 <span class="certification-icon">✹</span>
@@ -125,11 +147,11 @@
         <div class="review-field">
           <label class="review-label">Your Rating</label>
           <div class="star-picker" id="star-picker" role="radiogroup" aria-label="Star rating">
-            <span class="star-pick" data-value="1" title="1 star">★</span>
-            <span class="star-pick" data-value="2" title="2 stars">★</span>
-            <span class="star-pick" data-value="3" title="3 stars">★</span>
-            <span class="star-pick" data-value="4" title="4 stars">★</span>
-            <span class="star-pick" data-value="5" title="5 stars">★</span>
+            <button class="star-pick" data-value="1" type="button" aria-label="1 star" aria-checked="false" role="radio">★</button>
+            <button class="star-pick" data-value="2" type="button" aria-label="2 stars" aria-checked="false" role="radio">★</button>
+            <button class="star-pick" data-value="3" type="button" aria-label="3 stars" aria-checked="false" role="radio">★</button>
+            <button class="star-pick" data-value="4" type="button" aria-label="4 stars" aria-checked="false" role="radio">★</button>
+            <button class="star-pick" data-value="5" type="button" aria-label="5 stars" aria-checked="false" role="radio">★</button>
           </div>
           <span class="star-pick-hint" id="star-hint">Click to rate</span>
         </div>
@@ -186,8 +208,9 @@
     const navLinks = document.querySelector('.nav-links');
     if (menuToggle && navLinks) {
       menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        menuToggle.classList.toggle('open');
+        const isOpen = navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('open', isOpen);
+        menuToggle.setAttribute('aria-expanded', isOpen);
       });
     }
 
@@ -342,7 +365,10 @@
     const ratingLabels = ['', 'Poor', 'Fair', 'Good', 'Great', 'Excellent!'];
 
     function highlightStars(n) {
-      starPicks.forEach((s, i) => s.classList.toggle('active', i < n));
+      starPicks.forEach((s, i) => {
+        s.classList.toggle('active', i < n);
+        s.setAttribute('aria-checked', i < n ? 'true' : 'false');
+      });
     }
 
     starPicks.forEach(star => {

@@ -5,11 +5,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Connect – Astrologer Pavitra</title>
-    <meta name="description" content="Get in touch with Astrologer Pavitra – send a message or request a reading." />
+    <title>Connect with Astrologer Pavitra – Book a Paid Session</title>
+    <meta name="description" content="Get in touch with Astrologer Pavitra. Message on WhatsApp or send an email to request a personal Vedic Astrology reading, Tarot session, or Sound Healing." />
+    <!-- Preconnect for font origin -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Preload font stylesheet to prevent render blocking -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" /></noscript>
     <style>
         /* style.css */
         :root {
@@ -82,13 +85,18 @@
             transition: background var(--transition-speed);
         }
 
-        .navbar .logo {
+        /* Logo works as both <div> and <a> */
+        .navbar .logo,
+        a.logo {
             font-size: 2rem;
             /* bigger logo font size matching style.css */
             font-weight: 700;
             color: #ffffff;
             /* bright white for visibility */
+            text-decoration: none;
+            cursor: pointer;
         }
+        a.logo:hover { color: var(--accent-gold); }
 
         .nav-links {
             list-style: none;
@@ -484,22 +492,60 @@
                 max-width: none;
             }
         }
+
+        /* Skip link style */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--accent-gold);
+            color: hsl(260, 60%, 10%);
+            padding: 0.8rem 1.5rem;
+            z-index: 9999;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 0 0 8px 0;
+            transition: top 0.2s ease;
+        }
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        /* prefers-reduced-motion reset */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-delay: 0s !important;
+                animation-duration: 0s !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0s !important;
+                scroll-behavior: auto !important;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- Navigation Bar (consistent with other pages) -->
-    <nav class="navbar">
-        <div class="logo">Astrologer Pavitra</div>
-        <ul class="nav-links">
+    <!-- Skip navigation for keyboard / screen-reader users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar" aria-label="Main navigation">
+        <a href="index.html" class="logo" aria-label="Astrologer Pavitra – home">Astrologer Pavitra</a>
+        <ul class="nav-links" id="nav-links" role="list">
             <li><a href="index.html#home">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="index.html#skills">Skills</a></li>
-            <li><a href="connect.html">Connect</a></li>
+            <li><a href="connect.html" aria-current="page">Connect</a></li>
         </ul>
-        <div class="menu-toggle"><span></span><span></span><span></span></div>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </button>
     </nav>
 
+    <main id="main-content">
     <section class="connect">
         <h2>Connect with Me</h2>
         <p>Reach out via email or WhatsApp — I will respond promptly. Sessions are paid; please message first to discuss
@@ -549,6 +595,7 @@
                 </form>
             </div>
     </section>
+    </main>
 
     <footer class="footer">
         <p>&copy; 2026 Astrologer Pavitra. All rights reserved.</p>
@@ -560,8 +607,9 @@
         const navLinks = document.querySelector('.nav-links');
         if (menuToggle && navLinks) {
             menuToggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                menuToggle.classList.toggle('open');
+                const isOpen = navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('open', isOpen);
+                menuToggle.setAttribute('aria-expanded', isOpen);
             });
         }
 

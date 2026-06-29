@@ -1,8 +1,11 @@
 /* Mystical Starfield Background */
+html {
+    background: hsl(260, 60%, 10%);
+}
 body {
-    background: hsl(260, 70%, 20%);
     position: relative;
     overflow-x: hidden;
+    background: transparent;
 }
 
 /* .constellation styling removed; canvas used instead */
@@ -10,8 +13,9 @@ body {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 2000;
+    z-index: 0;          /* Sits BEHIND all page content */
     background: transparent;
+    will-change: transform; /* GPU-composited layer for smooth animation */
 }
 
 
@@ -61,10 +65,8 @@ body::before {
 
 body {
     font-family: var(--font-family);
-    background: hsl(260, 70%, 20%);
-    color: var(--text-dark);
+    color: #f5f5f7;
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 /* Navbar */
@@ -83,11 +85,16 @@ body {
     transition: background var(--transition-speed);
 }
 
-.navbar .logo {
+/* Logo works as both <div> and <a> */
+.navbar .logo,
+a.logo {
     font-size: 2rem;
     font-weight: 700;
-    color: #ffffff; /* bright for visibility */
+    color: #ffffff;
+    text-decoration: none; /* when used as <a> */
+    cursor: pointer;
 }
+a.logo:hover { color: var(--accent-gold); }
 
 .nav-links {
     list-style: none;
@@ -151,6 +158,7 @@ body {
     margin-top: 80px; /* gap to avoid overlap with navbar */
     /* offset fixed navbar */
     background: linear-gradient(135deg, #fff0f0, #ffecec);
+    color: #222;
     position: relative;
     overflow: hidden;
 }
@@ -334,9 +342,10 @@ section h2 {
 .footer {
     text-align: center;
     padding: 2rem;
-    background: var(--glass-bg);
+    background: rgba(15, 5, 25, 0.85);
     backdrop-filter: blur(8px);
-    color: var(--text-dark);
+    color: rgba(255, 255, 255, 0.65);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 
@@ -575,7 +584,7 @@ body {
     aspect-ratio: 1;
 }
 
-.about-text-content h3 {
+.about-text-content h2 {
     font-size: 1.8rem;
     color: var(--accent-gold);
     margin-bottom: 1rem;
@@ -606,7 +615,7 @@ body {
     margin-top: 2rem;
 }
 
-.certifications-section h4 {
+.certifications-section h3 {
     font-size: 1.3rem;
     color: var(--accent-gold);
     margin-bottom: 1.2rem;
@@ -903,6 +912,10 @@ body {
 }
 
 .star-pick {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
     font-size: 2rem;
     color: rgba(255, 255, 255, 0.2);
     transition: color 0.15s, transform 0.15s;
@@ -1133,5 +1146,45 @@ body {
     .carousel-card {
         padding: 1.8rem 1.5rem;
         min-height: 200px;
+    }
+}
+
+/* ── Skip Link Style ── */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--accent-gold);
+    color: hsl(260, 60%, 10%);
+    padding: 0.8rem 1.5rem;
+    z-index: 9999;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 0 0 8px 0;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 2px solid #fff;
+}
+
+/* ── About Page Title ── */
+.about-page-title {
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    color: var(--accent-gold);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    text-align: center;
+}
+
+/* ── Reduced Motion Utility ── */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-delay: 0s !important;
+        animation-duration: 0s !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0s !important;
+        scroll-behavior: auto !important;
     }
 }

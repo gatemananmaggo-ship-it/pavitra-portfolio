@@ -5,13 +5,18 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Astrologer Portfolio</title>
-  <meta name="description"
-    content="Professional portfolio of an astrologer showcasing services, skills, and contact information." />
+  <title>Astrologer Pavitra – Vedic Astrology, Tarot &amp; Healing</title>
+  <meta name="description" content="Astrologer Pavitra – 15+ years of expert guidance in Vedic Astrology, Tarot Reading, Numerology, and Energy Healing. Book your celestial consultation today." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!-- Non-blocking font load eliminates render-blocking resource -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" /></noscript>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    html { background: hsl(260, 60%, 10%); }
+    body { background: transparent; color: #f5f5f7; }
+  </style>
 </head>
 
 <body>
@@ -41,16 +46,23 @@
     }
   </script>
 
+  <!-- Skip navigation for keyboard / screen-reader users -->
+  <a href="#home" class="skip-link">Skip to main content</a>
+
   <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="logo">Astrologer Pavitra</div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
+  <nav class="navbar" aria-label="Main navigation">
+    <a href="index.html" class="logo" aria-label="Astrologer Pavitra – home">Astrologer Pavitra</a>
+    <ul class="nav-links" id="nav-links" role="list">
+      <li><a href="#home" aria-current="page">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="connect.html">Connect</a></li>
     </ul>
-    <div class="menu-toggle"><span></span><span></span><span></span></div>
+    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
   </nav>
 
   <!-- Hero Section -->
@@ -70,7 +82,12 @@
       <a href="connect.html" class="cta-button">Get Your Reading</a>
     </div>
     <div class="hero-image">
-      <img src="assets/pavitra1.jpeg" alt="Astrologer Pavitra" />
+      <img
+        src="assets/pavitra1.jpeg"
+        alt="Astrologer Pavitra – your guide to Vedic Astrology and holistic healing"
+        width="260" height="260"
+        fetchpriority="high"
+      />
     </div>
   </section>
 
@@ -81,7 +98,7 @@
       <!-- Vedic Astrology -->
       <div class="skill-card">
         <div class="skill-svg-container">
-          <img src="assets/vedic astrology.png" alt="Vedic Astrology" class="skill-img" />
+          <img src="assets/vedic astrology.png" alt="Vedic Astrology" class="skill-img" width="220" height="180" />
         </div>
         <h3>Vedic Astrology</h3>
         <p>Using the ancient Jyotish system to look into karma, destiny, and precise planetary dasha periods for
@@ -91,7 +108,7 @@
       <!-- Tarot Reading -->
       <div class="skill-card">
         <div class="skill-svg-container">
-          <img src="assets/tarot reading.png" alt="Tarot Reading" class="skill-img" />
+          <img src="assets/tarot reading.png" alt="Tarot Reading" class="skill-img" width="220" height="180" />
         </div>
         <h3>Tarot Reading</h3>
         <p>Decoding the archetypal messages of the Tarot deck to provide intuitive guidance on career,
@@ -101,7 +118,7 @@
       <!-- Numerology -->
       <div class="skill-card">
         <div class="skill-svg-container">
-          <img src="assets/numerology.png" alt="Numerology" class="skill-img" />
+          <img src="assets/numerology.png" alt="Numerology" class="skill-img" width="220" height="180" />
         </div>
         <h3>Numerology</h3>
         <p>Discovering the hidden meaning behind your birth numbers and name frequencies to align you with your
@@ -111,7 +128,7 @@
       <!-- Bowl Healing -->
       <div class="skill-card">
         <div class="skill-svg-container">
-          <img src="assets/bowl healing.png" alt="Bowl Healing" class="skill-img" />
+          <img src="assets/bowl healing.png" alt="Bowl Healing" class="skill-img" width="220" height="180" />
         </div>
         <h3>Bowl Healing</h3>
         <p>Harmonizing your body's energy centers using the deep, resonant acoustic vibrations of Tibetan
@@ -121,7 +138,7 @@
       <!-- Candle Spells -->
       <div class="skill-card">
         <div class="skill-svg-container">
-          <img src="assets/candle spells.png" alt="Candle Spells" class="skill-img" />
+          <img src="assets/candle spells.png" alt="Candle Spells" class="skill-img" width="220" height="180" />
         </div>
         <h3>Candle Spells</h3>
         <p>Manifesting intentions and executing candle magic rituals aligned with lunar phases to clear
@@ -131,7 +148,7 @@
       <!-- Zibu Symbols -->
       <div class="skill-card">
         <div class="skill-svg-container">
-          <img src="assets/zibu symbols.png" alt="Zibu Symbols" class="skill-img" />
+          <img src="assets/zibu symbols.png" alt="Zibu Symbols" class="skill-img" width="220" height="180" />
         </div>
         <h3>Zibu Symbols</h3>
         <p>Utilizing sacred angelic symbols to channel therapeutic energies for love, healing, prosperity, and
@@ -141,7 +158,7 @@
       <!-- Switch Words -->
       <div class="skill-card">
         <div class="skill-svg-container">
-          <img src="assets/switch words.png" alt="Switch Words" class="skill-img" />
+          <img src="assets/switch words.png" alt="Switch Words" class="skill-img" width="220" height="180" />
         </div>
         <h3>Switch Words</h3>
         <p>Activating the subconscious mind using targeted verbal key-phrases to shift your energetic frequency
@@ -151,7 +168,7 @@
       <!-- Animal Totems -->
       <div class="skill-card">
         <div class="skill-svg-container">
-          <img src="assets/animal totems.png" alt="Animal Totems" class="skill-img" />
+          <img src="assets/animal totems.png" alt="Animal Totems" class="skill-img" width="220" height="180" />
         </div>
         <h3>Animal Totems</h3>
         <p>Connecting with the spiritual wisdom, protection, and power of your personal animal spirit guides and
@@ -174,8 +191,9 @@
     const navLinks = document.querySelector('.nav-links');
     if (menuToggle && navLinks) {
       menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        menuToggle.classList.toggle('open');
+        const isOpen = navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('open', isOpen);
+        menuToggle.setAttribute('aria-expanded', isOpen);
       });
     }
 
