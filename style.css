@@ -799,3 +799,339 @@ body {
     border-radius: 4px;
     font-weight: 600;
 }
+
+/* ── Leave a Review Section ── */
+.review-form-section {
+    width: 90%;
+    max-width: 1000px;
+    margin-bottom: 5rem;
+    text-align: center;
+}
+
+.review-form-section h2 {
+    font-size: 2.2rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.review-form-card {
+    background: rgba(20, 10, 30, 0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 0 15px rgba(255, 215, 0, 0.05);
+    text-align: left;
+}
+
+.review-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+@media (max-width: 600px) {
+    .review-form-row { grid-template-columns: 1fr; }
+}
+
+.review-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.review-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.review-input {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    color: #ffffff;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    outline: none;
+    width: 100%;
+}
+
+.review-input::placeholder { color: rgba(255, 255, 255, 0.3); }
+
+.review-input:focus {
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.12);
+}
+
+.review-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,215,0,0.7)' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    cursor: pointer;
+}
+
+/* Make <option> readable on dark background */
+.review-select option {
+    background: hsl(270, 60%, 12%);
+    color: #fff;
+}
+
+.review-textarea {
+    resize: vertical;
+    min-height: 110px;
+}
+
+.char-count {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.35);
+    text-align: right;
+}
+
+/* Star Picker */
+.star-picker {
+    display: flex;
+    gap: 0.4rem;
+    cursor: pointer;
+}
+
+.star-pick {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.2);
+    transition: color 0.15s, transform 0.15s;
+    user-select: none;
+    line-height: 1;
+}
+
+.star-pick.active,
+.star-pick:hover {
+    color: var(--accent-gold);
+    transform: scale(1.2);
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+}
+
+.star-pick-hint {
+    font-size: 0.85rem;
+    color: var(--accent-gold);
+    font-weight: 600;
+    margin-top: 0.2rem;
+    min-height: 1.2em;
+    letter-spacing: 0.05em;
+}
+
+/* Submit Button */
+.review-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 2.2rem;
+    background: linear-gradient(135deg, var(--accent-gold), hsl(35, 100%, 50%));
+    color: hsl(260, 60%, 10%);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.25);
+}
+
+.review-submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.review-submit-btn:active {
+    transform: translateY(0);
+    opacity: 0.85;
+}
+
+/* Success Banner */
+.review-success {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    padding: 0.9rem 1.2rem;
+    background: rgba(80, 200, 120, 0.12);
+    border: 1px solid rgba(80, 200, 120, 0.35);
+    border-radius: 8px;
+    color: #7deba4;
+    font-weight: 600;
+    font-size: 0.95rem;
+    animation: fadeInUpCard 0.4s ease both;
+}
+
+/* "New" badge on review cards */
+.review-new-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: rgba(80, 200, 120, 0.15);
+    border: 1px solid rgba(80, 200, 120, 0.4);
+    color: #7deba4;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 700;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+}
+
+/* Shake validation animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%       { transform: translateX(-6px); }
+    40%       { transform: translateX(6px); }
+    60%       { transform: translateX(-4px); }
+    80%       { transform: translateX(4px); }
+}
+
+.shake {
+    animation: shake 0.4s ease;
+    border-color: var(--primary-red) !important;
+    box-shadow: 0 0 0 3px rgba(229, 28, 35, 0.2) !important;
+}
+
+/* ── Testimonials Carousel ── */
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    position: relative;
+}
+
+/* Clipping window – only one card visible */
+.carousel-viewport {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+/* Sliding strip – all cards in a row */
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+/* Individual card – exactly as wide as the viewport */
+.carousel-card {
+    flex: 0 0 100%;
+    min-width: 0;
+    background: rgba(20, 10, 30, 0.65);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2.5rem 2.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    min-height: 220px;
+    justify-content: space-between;
+    transition: border-color 0.3s;
+}
+
+.carousel-card::before {
+    content: '\201C';
+    position: absolute;
+    top: -18px;
+    right: 20px;
+    font-size: 9rem;
+    font-family: serif;
+    color: rgba(255, 255, 255, 0.04);
+    line-height: 1;
+    pointer-events: none;
+}
+
+.carousel-card:hover {
+    border-color: rgba(255, 215, 0, 0.25);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 12px rgba(255, 215, 0, 0.06);
+}
+
+/* Empty state */
+.carousel-empty {
+    flex: 0 0 100%;
+    text-align: center;
+    padding: 3rem 1rem;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1rem;
+}
+
+/* Arrow buttons */
+.carousel-arrow {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    background: rgba(20, 10, 30, 0.7);
+    color: var(--accent-gold);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    z-index: 2;
+    line-height: 1;
+}
+
+.carousel-arrow:hover {
+    background: rgba(255, 215, 0, 0.12);
+    border-color: var(--accent-gold);
+    transform: scale(1.1);
+}
+
+.carousel-arrow:active { transform: scale(0.95); }
+
+/* Dot indicators */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.4rem;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    padding: 0;
+}
+
+.carousel-dot.active {
+    background: var(--accent-gold);
+    transform: scale(1.3);
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+/* Mobile: shrink arrows */
+@media (max-width: 600px) {
+    .carousel-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    .carousel-card {
+        padding: 1.8rem 1.5rem;
+        min-height: 200px;
+    }
+}

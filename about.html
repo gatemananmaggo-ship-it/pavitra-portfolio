@@ -92,9 +92,83 @@
         <button class="filter-btn" data-filter="healing">Energy & Sound Healing</button>
       </div>
 
-      <!-- Testimonials grid container -->
-      <div id="testimonials-container" class="testimonials-grid">
-        <!-- Rendered dynamically via JS -->
+      <!-- Carousel wrapper -->
+      <div class="carousel-wrapper" id="testimonials-carousel">
+        <!-- Prev / Next arrows -->
+        <button class="carousel-arrow carousel-prev" id="carousel-prev" aria-label="Previous review">
+          &#8592;
+        </button>
+
+        <!-- Sliding track -->
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="carousel-track">
+            <!-- Cards injected here by JS -->
+          </div>
+        </div>
+
+        <button class="carousel-arrow carousel-next" id="carousel-next" aria-label="Next review">
+          &#8594;
+        </button>
+      </div>
+
+      <!-- Dot indicators -->
+      <div class="carousel-dots" id="carousel-dots"></div>
+    </section>
+
+    <!-- Leave a Review Section -->
+    <section class="review-form-section">
+      <h2>Share Your Experience</h2>
+      <p class="testimonials-subtitle">Had a reading with Astrologer Pavitra? We'd love to hear your story.</p>
+
+      <div class="review-form-card">
+        <!-- Star Rating Picker -->
+        <div class="review-field">
+          <label class="review-label">Your Rating</label>
+          <div class="star-picker" id="star-picker" role="radiogroup" aria-label="Star rating">
+            <span class="star-pick" data-value="1" title="1 star">★</span>
+            <span class="star-pick" data-value="2" title="2 stars">★</span>
+            <span class="star-pick" data-value="3" title="3 stars">★</span>
+            <span class="star-pick" data-value="4" title="4 stars">★</span>
+            <span class="star-pick" data-value="5" title="5 stars">★</span>
+          </div>
+          <span class="star-pick-hint" id="star-hint">Click to rate</span>
+        </div>
+
+        <div class="review-form-row">
+          <!-- Name -->
+          <div class="review-field">
+            <label class="review-label" for="reviewer-name">Your Name</label>
+            <input id="reviewer-name" class="review-input" type="text" placeholder="e.g. Priya Sharma" maxlength="50" />
+          </div>
+
+          <!-- Service -->
+          <div class="review-field">
+            <label class="review-label" for="reviewer-service">Service Received</label>
+            <select id="reviewer-service" class="review-input review-select">
+              <option value="" disabled selected>Choose a service…</option>
+              <option value="astrology" data-label="Vedic Astrology">Vedic Astrology</option>
+              <option value="tarot" data-label="Tarot Reading">Tarot Reading</option>
+              <option value="healing" data-label="Sound Healing">Sound Healing</option>
+              <option value="healing" data-label="Energy Remedies">Energy Remedies</option>
+              <option value="astrology" data-label="Numerology">Numerology</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Review Text -->
+        <div class="review-field">
+          <label class="review-label" for="reviewer-text">Your Review</label>
+          <textarea id="reviewer-text" class="review-input review-textarea" placeholder="Share how Astrologer Pavitra helped you…" maxlength="400"></textarea>
+          <span class="char-count" id="char-count">0 / 400</span>
+        </div>
+
+        <!-- Submit -->
+        <button id="submit-review-btn" class="review-submit-btn">Submit Review ✦</button>
+
+        <!-- Success message -->
+        <div id="review-success" class="review-success" aria-live="polite" hidden>
+          <span>✦</span> Thank you! Your review has been added below.
+        </div>
       </div>
     </section>
   </main>
@@ -118,114 +192,221 @@
     }
 
     // Scroll reveal for cards
-    const sections = document.querySelectorAll('section');
+    const allSections = document.querySelectorAll('section');
     const revealOnScroll = () => {
       const triggerBottom = window.innerHeight * 0.85;
-      sections.forEach(section => {
+      allSections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
-        if (sectionTop < triggerBottom) {
-          section.classList.add('visible');
-        }
+        if (sectionTop < triggerBottom) section.classList.add('visible');
       });
     };
     window.addEventListener('scroll', revealOnScroll);
     revealOnScroll();
 
-    // Testimonials Data
-    const testimonialsData = [
-      {
-        name: "Aisha Patel",
-        rating: 5,
-        review: "Pavitra's Vedic astrology reading was eye-opening. Her 15+ years of experience really show. The planetary remedies she suggested cleared my career blocks in just three weeks!",
-        service: "Vedic Astrology",
-        category: "astrology"
-      },
-      {
-        name: "Devendra Singh",
-        rating: 5,
-        review: "The birth chart alignment and numerology analysis she did gave me a clear blueprint for my business transition. Highly accurate predictions!",
-        service: "Vedic Astrology",
-        category: "astrology"
-      },
-      {
-        name: "Michael Chang",
-        rating: 5,
-        review: "The Tarot reading was incredibly precise. She intuitively picked up on my inner dilemmas and guided me on exactly when to make major decisions.",
-        service: "Tarot Reading",
-        category: "tarot"
-      },
-      {
-        name: "Elena Rostova",
-        rating: 5,
-        review: "Pavitra has an amazing energy. Her tarot predictions are comforting yet direct. I feel much more confident and at peace with my life direction.",
-        service: "Tarot Reading",
-        category: "tarot"
-      },
-      {
-        name: "Karan Johar",
-        rating: 5,
-        review: "The bowl healing session was transcendental. The acoustic vibrations of the Tibetan bowls dissolved my anxiety and left me with a deep sense of calm.",
-        service: "Sound Healing",
-        category: "healing"
-      },
-      {
-        name: "Sneha Reddy",
-        rating: 5,
-        review: "I was struggling with negative patterns. The Zibu symbols and custom Switch Words she aligned for me shifted my subconscious frequency beautifully. Pure magic!",
-        service: "Energy Remedies",
-        category: "healing"
-      }
+    /* ── Testimonials Data ── */
+    const defaultTestimonials = [
+      { name: 'Aisha Patel',    rating: 5, review: "Pavitra's Vedic astrology reading was eye-opening. Her 15+ years of experience really show. The planetary remedies she suggested cleared my career blocks in just three weeks!", service: 'Vedic Astrology', category: 'astrology', isNew: false },
+      { name: 'Devendra Singh', rating: 5, review: 'The birth chart alignment and numerology analysis she did gave me a clear blueprint for my business transition. Highly accurate predictions!',                              service: 'Vedic Astrology', category: 'astrology', isNew: false },
+      { name: 'Michael Chang',  rating: 5, review: 'The Tarot reading was incredibly precise. She intuitively picked up on my inner dilemmas and guided me on exactly when to make major decisions.',                         service: 'Tarot Reading',  category: 'tarot',     isNew: false },
+      { name: 'Elena Rostova',  rating: 5, review: 'Pavitra has an amazing energy. Her tarot predictions are comforting yet direct. I feel much more confident and at peace with my life direction.',                       service: 'Tarot Reading',  category: 'tarot',     isNew: false },
+      { name: 'Karan Johar',    rating: 5, review: 'The bowl healing session was transcendental. The acoustic vibrations of the Tibetan bowls dissolved my anxiety and left me with a deep sense of calm.',               service: 'Sound Healing',  category: 'healing',   isNew: false },
+      { name: 'Sneha Reddy',    rating: 5, review: 'I was struggling with negative patterns. The Zibu symbols and custom Switch Words she aligned for me shifted my subconscious frequency beautifully. Pure magic!',       service: 'Energy Remedies',category: 'healing',   isNew: false }
     ];
 
-    // Render Testimonials
-    const testimonialsContainer = document.getElementById('testimonials-container');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-
-    function renderTestimonials(filter = 'all') {
-      // Clear container first
-      testimonialsContainer.innerHTML = '';
-      
-      const filtered = testimonialsData.filter(item => {
-        return filter === 'all' || item.category === filter;
-      });
-
-      filtered.forEach((item, index) => {
-        const card = document.createElement('div');
-        card.className = 'testimonial-card';
-        card.style.animationDelay = `${index * 0.1}s`;
-
-        // Generate gold stars
-        let starsHTML = '';
-        for (let i = 0; i < 5; i++) {
-          starsHTML += i < item.rating ? '★' : '☆';
-        }
-
-        card.innerHTML = `
-          <div>
-            <div class="testimonial-stars">${starsHTML}</div>
-            <p class="testimonial-text">"${item.review}"</p>
-          </div>
-          <div class="testimonial-footer">
-            <span class="testimonial-name">${item.name}</span>
-            <span class="testimonial-service-tag">${item.service}</span>
-          </div>
-        `;
-        testimonialsContainer.appendChild(card);
-      });
+    // Load user-submitted reviews from localStorage
+    function getUserReviews() {
+      try { return JSON.parse(localStorage.getItem('pavitra_reviews') || '[]'); }
+      catch { return []; }
+    }
+    function saveUserReviews(reviews) {
+      localStorage.setItem('pavitra_reviews', JSON.stringify(reviews));
     }
 
-    // Filter toggle events
+    function getAllTestimonials() {
+      return [...defaultTestimonials, ...getUserReviews()];
+    }
+
+    /* ── Carousel State ── */
+    const track       = document.getElementById('carousel-track');
+    const dotsWrap    = document.getElementById('carousel-dots');
+    const prevBtn     = document.getElementById('carousel-prev');
+    const nextBtn     = document.getElementById('carousel-next');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    let activeFilter  = 'all';
+    let currentIndex  = 0;
+    let autoTimer     = null;
+    let carouselItems = [];
+
+    /* Build one card element */
+    function buildCard(item) {
+      let starsHTML = '';
+      for (let i = 0; i < 5; i++) starsHTML += i < item.rating ? '★' : '☆';
+      const newBadge = item.isNew ? '<span class="review-new-badge">New ✦</span>' : '';
+      const card = document.createElement('div');
+      card.className = 'carousel-card';
+      card.innerHTML = `
+        <div class="testimonial-stars">${starsHTML}</div>
+        <p class="testimonial-text">"${item.review}"</p>
+        <div class="testimonial-footer">
+          <span class="testimonial-name">${item.name} ${newBadge}</span>
+          <span class="testimonial-service-tag">${item.service}</span>
+        </div>`;
+      return card;
+    }
+
+    /* Move to slide n */
+    function goTo(n) {
+      if (carouselItems.length === 0) return;
+      currentIndex = (n + carouselItems.length) % carouselItems.length;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      /* Update dots */
+      document.querySelectorAll('.carousel-dot').forEach((d, i) =>
+        d.classList.toggle('active', i === currentIndex)
+      );
+    }
+
+    /* Render carousel for current filter */
+    function renderTestimonials(filter = 'all') {
+      activeFilter  = filter;
+      currentIndex  = 0;
+      stopAuto();
+
+      const all      = getAllTestimonials();
+      carouselItems  = filter === 'all' ? all : all.filter(t => t.category === filter);
+
+      /* Clear */
+      track.innerHTML    = '';
+      dotsWrap.innerHTML = '';
+
+      if (carouselItems.length === 0) {
+        track.innerHTML = '<div class="carousel-empty">No reviews for this category yet. Be the first to share!</div>';
+        prevBtn.style.display = nextBtn.style.display = 'none';
+        return;
+      }
+
+      prevBtn.style.display = nextBtn.style.display = '';
+
+      /* Build cards & dots */
+      carouselItems.forEach((item, i) => {
+        track.appendChild(buildCard(item));
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', `Review ${i + 1}`);
+        dot.addEventListener('click', () => { goTo(i); resetAuto(); });
+        dotsWrap.appendChild(dot);
+      });
+
+      goTo(0);
+      startAuto();
+    }
+
+    /* Auto-play */
+    function startAuto() {
+      autoTimer = setInterval(() => goTo(currentIndex + 1), 2500);
+    }
+    function stopAuto()  { clearInterval(autoTimer); }
+    function resetAuto() { stopAuto(); startAuto(); }
+
+    /* Arrow buttons */
+    prevBtn.addEventListener('click', () => { goTo(currentIndex - 1); resetAuto(); });
+    nextBtn.addEventListener('click', () => { goTo(currentIndex + 1); resetAuto(); });
+
+    /* Pause on hover */
+    const carouselEl = document.getElementById('testimonials-carousel');
+    carouselEl.addEventListener('mouseenter', stopAuto);
+    carouselEl.addEventListener('mouseleave', () => { if (carouselItems.length) startAuto(); });
+
+    /* Swipe support */
+    let touchStartX = 0;
+    carouselEl.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    carouselEl.addEventListener('touchend',   e => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) { goTo(currentIndex + (dx < 0 ? 1 : -1)); resetAuto(); }
+    });
+
+    /* Filter buttons */
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const filterVal = btn.getAttribute('data-filter');
-        renderTestimonials(filterVal);
+        renderTestimonials(btn.getAttribute('data-filter'));
       });
     });
 
-    // Initial render
     renderTestimonials();
+
+    /* ── Star Picker ── */
+    const starPicks  = document.querySelectorAll('.star-pick');
+    const starHint   = document.getElementById('star-hint');
+    let selectedRating = 0;
+    const ratingLabels = ['', 'Poor', 'Fair', 'Good', 'Great', 'Excellent!'];
+
+    function highlightStars(n) {
+      starPicks.forEach((s, i) => s.classList.toggle('active', i < n));
+    }
+
+    starPicks.forEach(star => {
+      star.addEventListener('mouseenter', () => highlightStars(+star.dataset.value));
+      star.addEventListener('mouseleave', () => highlightStars(selectedRating));
+      star.addEventListener('click', () => {
+        selectedRating = +star.dataset.value;
+        highlightStars(selectedRating);
+        starHint.textContent = ratingLabels[selectedRating];
+      });
+    });
+
+    /* ── Char Counter ── */
+    const reviewTextarea = document.getElementById('reviewer-text');
+    const charCount      = document.getElementById('char-count');
+    reviewTextarea.addEventListener('input', () => {
+      charCount.textContent = `${reviewTextarea.value.length} / 400`;
+    });
+
+    /* ── Submit Review ── */
+    const submitBtn    = document.getElementById('submit-review-btn');
+    const successMsg   = document.getElementById('review-success');
+    const nameInput    = document.getElementById('reviewer-name');
+    const serviceSelect= document.getElementById('reviewer-service');
+
+    submitBtn.addEventListener('click', () => {
+      // Validation
+      const name    = nameInput.value.trim();
+      const review  = reviewTextarea.value.trim();
+      const selOpt  = serviceSelect.options[serviceSelect.selectedIndex];
+      const service = selOpt && selOpt.value ? selOpt.getAttribute('data-label') : '';
+      const category= selOpt && selOpt.value ? selOpt.value : '';
+
+      if (!name)    { shake(nameInput);    return; }
+      if (!selectedRating) { shake(document.getElementById('star-picker')); return; }
+      if (!service) { shake(serviceSelect); return; }
+      if (!review)  { shake(reviewTextarea); return; }
+
+      const newReview = { name, rating: selectedRating, review, service, category, isNew: true };
+      const existing  = getUserReviews();
+      existing.push(newReview);
+      saveUserReviews(existing);
+
+      // Reset form
+      nameInput.value = '';
+      reviewTextarea.value = '';
+      serviceSelect.selectedIndex = 0;
+      selectedRating = 0;
+      highlightStars(0);
+      starHint.textContent = 'Click to rate';
+      charCount.textContent = '0 / 400';
+
+      // Show success
+      successMsg.hidden = false;
+      setTimeout(() => { successMsg.hidden = true; }, 4000);
+
+      // Re-render so the new card appears
+      renderTestimonials(activeFilter);
+    });
+
+    function shake(el) {
+      el.classList.add('shake');
+      el.addEventListener('animationend', () => el.classList.remove('shake'), { once: true });
+    }
 
     // Constellation Canvas Animation
     (() => {
