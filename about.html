@@ -1,65 +1,301 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About – Astrologer Pavitra</title>
-    <meta name="description" content="About Astrologer Pavitra – experience, philosophy, and services." />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-    <!-- Navigation Bar (same as index) -->
-    <nav class="navbar">
-        <div class="logo">Astrologer Pavitra</div>
-        <ul class="nav-links">
-            <li><a href="index.html#home">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="index.html#skills">Skills</a></li>
-            <li><a href="connect.html">Connect</a></li>
-        </ul>
-        <div class="menu-toggle"><span></span><span></span><span></span></div>
-    </nav>
 
-    <section class="about">
-        <h2>About Me</h2>
-        <p>I am a certified astrologer with over 10 years of experience interpreting celestial patterns to help people find clarity and purpose.</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – Astrologer Pavitra</title>
+  <meta name="description" content="Meet Astrologer Pavitra – 15+ years of experience in Vedic Astrology, Tarot, and Energy Healing. View certifications and client reviews." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Navigation Bar (same as index) -->
+  <nav class="navbar">
+    <div class="logo">Astrologer Pavitra</div>
+    <ul class="nav-links">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#skills">Skills</a></li>
+      <li><a href="connect.html">Connect</a></li>
+    </ul>
+    <div class="menu-toggle"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- Main Container -->
+  <main class="about-page-container">
+    <section class="about-card">
+      <h2 style="margin-bottom: 2rem; font-size: 2.2rem;">About Me</h2>
+      
+      <div class="about-grid">
+        <div class="about-image-wrapper">
+          <img src="assets/pavitra2.jpeg" alt="Astrologer Pavitra" />
+        </div>
+        
+        <div class="about-text-content">
+          <h3>Meet Astrologer Pavitra</h3>
+          <span class="about-experience-badge">15+ Years of Cosmic Guidance</span>
+          <p class="about-bio">
+            For over 15 years, I have dedicated my life to the study and practice of cosmic patterns, helping thousands of seekers find alignment, clarity, and purpose. My journey began with a profound calling to bridge the ancient wisdom of the celestial bodies with the psychological and emotional blockages of modern life.
+          </p>
+          <p class="about-bio" style="margin-top: -1rem;">
+            Through a unique fusion of Vedic Astrology, Numerology, Tarot Reading, and Energy Therapies like Tibetan Bowl Healing and Zibu symbols, I offer a holistic path to transformation. Every chart, card, and sound wave is a tool to uncover your divine blueprint, clear subconscious patterns, and invite prosperity and peace. Let us navigate the currents of your destiny together.
+          </p>
+          
+          <div class="certifications-section">
+            <h4>Certifications & Credentials</h4>
+            <div class="certifications-list">
+              <div class="certification-item">
+                <span class="certification-icon">✹</span>
+                <span class="certification-name">Certified Vedic Jyotish Acharya</span>
+              </div>
+              <div class="certification-item">
+                <span class="certification-icon">🃟</span>
+                <span class="certification-name">Grandmaster in Tarot & Oracle Divination</span>
+              </div>
+              <div class="certification-item">
+                <span class="certification-icon">🥣</span>
+                <span class="certification-name">Certified Sound Therapist & Tibetan Bowl Healer</span>
+              </div>
+              <div class="certification-item">
+                <span class="certification-icon">🝔</span>
+                <span class="certification-name">Master Practitioner of Zibu & Angelic Symbols</span>
+              </div>
+              <div class="certification-item">
+                <span class="certification-icon">✎</span>
+                <span class="certification-name">Subconscious Programming & Switch Words Specialist</span>
+              </div>
+              <div class="certification-item">
+                <span class="certification-icon">🐺</span>
+                <span class="certification-name">Animal Totem Wisdom & Guidance Counselor</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <footer class="footer">
-        <p>&copy; 2026 Astrologer Portfolio. All rights reserved.</p>
-    </footer>
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <h2>Blessed Experiences</h2>
+      <p class="testimonials-subtitle">What my seekers say about their celestial guidance and alignment</p>
+      
+      <!-- Filter controls -->
+      <div class="testimonial-filters">
+        <button class="filter-btn active" data-filter="all">All Readings</button>
+        <button class="filter-btn" data-filter="astrology">Vedic Astrology</button>
+        <button class="filter-btn" data-filter="tarot">Tarot Reading</button>
+        <button class="filter-btn" data-filter="healing">Energy & Sound Healing</button>
+      </div>
 
-    <script>
-// script.js
+      <!-- Testimonials grid container -->
+      <div id="testimonials-container" class="testimonials-grid">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </section>
+  </main>
 
-// Mobile navigation toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
-if (menuToggle && navLinks) {
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('open');
-  });
-}
+  <footer class="footer">
+    <p>&copy; 2026 Astrologer Pavitra. All rights reserved.</p>
+  </footer>
 
+  <!-- Constellation Effect Canvas -->
+  <canvas id="constellation-canvas"></canvas>
 
-// Simple scroll reveal for sections
-const sections = document.querySelectorAll('section');
-const revealOnScroll = () => {
-  const triggerBottom = window.innerHeight * 0.85;
-  sections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-    if (sectionTop < triggerBottom) {
-      section.classList.add('visible');
+  <script>
+    // Navigation toggle logic
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuToggle.classList.toggle('open');
+      });
     }
-  });
-};
-window.addEventListener('scroll', revealOnScroll);
-revealOnScroll();
-</script>
+
+    // Scroll reveal for cards
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+          section.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // Testimonials Data
+    const testimonialsData = [
+      {
+        name: "Aisha Patel",
+        rating: 5,
+        review: "Pavitra's Vedic astrology reading was eye-opening. Her 15+ years of experience really show. The planetary remedies she suggested cleared my career blocks in just three weeks!",
+        service: "Vedic Astrology",
+        category: "astrology"
+      },
+      {
+        name: "Devendra Singh",
+        rating: 5,
+        review: "The birth chart alignment and numerology analysis she did gave me a clear blueprint for my business transition. Highly accurate predictions!",
+        service: "Vedic Astrology",
+        category: "astrology"
+      },
+      {
+        name: "Michael Chang",
+        rating: 5,
+        review: "The Tarot reading was incredibly precise. She intuitively picked up on my inner dilemmas and guided me on exactly when to make major decisions.",
+        service: "Tarot Reading",
+        category: "tarot"
+      },
+      {
+        name: "Elena Rostova",
+        rating: 5,
+        review: "Pavitra has an amazing energy. Her tarot predictions are comforting yet direct. I feel much more confident and at peace with my life direction.",
+        service: "Tarot Reading",
+        category: "tarot"
+      },
+      {
+        name: "Karan Johar",
+        rating: 5,
+        review: "The bowl healing session was transcendental. The acoustic vibrations of the Tibetan bowls dissolved my anxiety and left me with a deep sense of calm.",
+        service: "Sound Healing",
+        category: "healing"
+      },
+      {
+        name: "Sneha Reddy",
+        rating: 5,
+        review: "I was struggling with negative patterns. The Zibu symbols and custom Switch Words she aligned for me shifted my subconscious frequency beautifully. Pure magic!",
+        service: "Energy Remedies",
+        category: "healing"
+      }
+    ];
+
+    // Render Testimonials
+    const testimonialsContainer = document.getElementById('testimonials-container');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+
+    function renderTestimonials(filter = 'all') {
+      // Clear container first
+      testimonialsContainer.innerHTML = '';
+      
+      const filtered = testimonialsData.filter(item => {
+        return filter === 'all' || item.category === filter;
+      });
+
+      filtered.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = 'testimonial-card';
+        card.style.animationDelay = `${index * 0.1}s`;
+
+        // Generate gold stars
+        let starsHTML = '';
+        for (let i = 0; i < 5; i++) {
+          starsHTML += i < item.rating ? '★' : '☆';
+        }
+
+        card.innerHTML = `
+          <div>
+            <div class="testimonial-stars">${starsHTML}</div>
+            <p class="testimonial-text">"${item.review}"</p>
+          </div>
+          <div class="testimonial-footer">
+            <span class="testimonial-name">${item.name}</span>
+            <span class="testimonial-service-tag">${item.service}</span>
+          </div>
+        `;
+        testimonialsContainer.appendChild(card);
+      });
+    }
+
+    // Filter toggle events
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filterVal = btn.getAttribute('data-filter');
+        renderTestimonials(filterVal);
+      });
+    });
+
+    // Initial render
+    renderTestimonials();
+
+    // Constellation Canvas Animation
+    (() => {
+      const canvas = document.getElementById('constellation-canvas');
+      const ctx = canvas.getContext('2d');
+      const stars = [];
+      const config = {
+        starCount: 30,
+        maxVelocity: 0.3,
+        maxDistance: 100,
+        starSize: 2,
+        lineWidth: 0.7,
+        hue: 45,
+      };
+      
+      const resize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+      window.addEventListener('resize', resize);
+      resize();
+
+      for (let i = 0; i < config.starCount; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * config.maxVelocity,
+          vy: (Math.random() - 0.5) * config.maxVelocity,
+        });
+      }
+
+      const draw = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = `hsl(${config.hue},100%,70%)`;
+        ctx.shadowColor = `hsl(${config.hue},100%,70%)`;
+        ctx.shadowBlur = 8;
+        stars.forEach(s => {
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, config.starSize, 0, Math.PI * 2);
+          ctx.fill();
+        });
+        
+        ctx.strokeStyle = `hsla(${config.hue},100%,70%,0.3)`;
+        ctx.lineWidth = config.lineWidth;
+        for (let i = 0; i < stars.length; i++) {
+          for (let j = i + 1; j < stars.length; j++) {
+            const dx = stars[i].x - stars[j].x;
+            const dy = stars[i].y - stars[j].y;
+            const dist = Math.hypot(dx, dy);
+            if (dist < config.maxDistance) {
+              ctx.beginPath();
+              ctx.moveTo(stars[i].x, stars[i].y);
+              ctx.lineTo(stars[j].x, stars[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+        
+        stars.forEach(s => {
+          s.x += s.vx;
+          s.y += s.vy;
+          if (s.x < 0 || s.x > canvas.width) s.vx *= -1;
+          if (s.y < 0 || s.y > canvas.height) s.vy *= -1;
+        });
+        
+        requestAnimationFrame(draw);
+      };
+      draw();
+    })();
+  </script>
 </body>
+
 </html>
